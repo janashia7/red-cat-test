@@ -1,0 +1,46 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type UpdateUserMsg {
+  message: String!
+}
+
+type UserEntity {
+  username: String!
+  email: String!
+  phone: String!
+  role: [RolesEnum!]
+}
+
+enum RolesEnum {
+  SUPER_ADMIN
+  ADMIN
+  DRIVER
+  USER
+}
+
+type Query {
+  users: [UserEntity!]
+}
+
+type Mutation {
+  createUser(createUsersInput: CreateUsersInput!): UserEntity!
+  updateUser(phone: String!, updateUsersInput: UpdateUsersInput!): UpdateUserMsg!
+  addRole(phone: String!, role: [RolesEnum!]): UserEntity!
+  deleteRole(phone: String!): UserEntity!
+}
+
+input CreateUsersInput {
+  username: String!
+  email: String!
+  phone: String!
+  role: [RolesEnum!]
+}
+
+input UpdateUsersInput {
+  username: String
+  email: String
+  phone: String
+  role: [RolesEnum!]
+}
